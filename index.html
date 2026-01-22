@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LLIKA – Corruption Web Detective</title>
+
   <style>
     :root {
-      --bg-color: #3f3f42;
-      --line-color: rgba(255,255,255,0.15);
-      --text-color: #f2f2f2;
-      --accent: #ff3b3b;
+      --neon-green: #00ff9c;
+      --dark-bg: #0b0f0e;
+      --text-color: #eaeaea;
     }
 
     * {
@@ -22,7 +22,6 @@
     body {
       min-height: 100vh;
       color: var(--text-color);
-      background-color: var(--bg-color);
       background-image: url('img/fondo.jpeg');
       background-size: cover;
       background-position: center;
@@ -50,14 +49,13 @@
 
     h1 {
       font-size: clamp(2.5rem, 5vw, 4rem);
-      letter-spacing: 0.2rem;
-      margin-bottom: 1.5rem;
+      letter-spacing: 0.3rem;
     }
 
     .subtitle {
-      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-      opacity: 0.9;
-      margin-top: 1.5rem;
+      font-size: 1.4rem;
+      opacity: 0.85;
+      margin-top: 1rem;
     }
 
     .svg-wrapper {
@@ -65,80 +63,104 @@
       margin: 0 auto;
     }
 
-    .svg-wrapper svg {
-      width: 100%;
-      height: auto;
-    }
-
     .authors {
       margin-top: 3rem;
       display: flex;
       justify-content: space-around;
-      gap: 1.5rem;
       flex-wrap: wrap;
+      gap: 1.5rem;
       font-size: 0.9rem;
-      opacity: 0.85;
+      opacity: 0.8;
     }
 
     .authors span {
       display: block;
       font-size: 0.8rem;
-      opacity: 0.75;
+      opacity: 0.6;
     }
 
     .side {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.8rem;
     }
 
     .qr-box {
       width: 220px;
       height: 220px;
-      border: 2px dashed rgba(255,255,255,0.5);
+      border: 2px dashed rgba(0,255,156,0.5);
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      font-size: 0.85rem;
-      opacity: 0.8;
     }
+
+    /* ===== BOTONES GAMER RAZER STYLE ===== */
 
     .btn {
       width: 100%;
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      border: none;
+      padding: 1rem;
+      border-radius: 14px;
       cursor: pointer;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: linear-gradient(
+        180deg,
+        #0f1413,
+        #050807
+      );
+      color: var(--neon-green);
+      border: 1px solid var(--neon-green);
+      box-shadow:
+        0 0 12px rgba(0,255,156,0.4),
+        inset 0 0 8px rgba(0,255,156,0.15);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: white;
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(0,255,156,0.35),
+        transparent
+      );
+      opacity: 0;
+      transition: opacity 0.3s;
     }
 
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.5);
-      color: white;
+    .btn:hover::before {
+      opacity: 1;
     }
 
     .btn:hover {
-      opacity: 0.9;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow:
+        0 0 25px rgba(0,255,156,0.8),
+        inset 0 0 12px rgba(0,255,156,0.3);
     }
+
+    .btn span {
+      font-size: 1.4rem;
+      margin-right: 0.5rem;
+    }
+
   </style>
 </head>
+
 <body>
   <div class="page">
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <section class="main">
-      <h1 style="margin-bottom: 0;">LLIKA</h1>
+      <h1>LLIKA</h1>
 
-      <!-- SVG PLACEHOLDER -->
       <div class="svg-wrapper">
         <img src="img/logo.png" alt="LLIKA logo" style="width:80%; height:auto;" />
       </div>
@@ -161,13 +183,19 @@
       </div>
     </section>
 
-    <!-- SIDE CONTENT -->
+    <!-- SIDE -->
     <aside class="side">
       <div class="qr-box">
         <img src="img/QR.png" alt="QR" style="width:80%; height:auto;" />
       </div>
-      <button class="btn btn-primary">Botón 1</button>
-      <button class="btn btn-secondary">Botón 2</button>
+
+      <button class="btn" onclick="location.href='empresas.html'">
+        <span>🏢</span> Grafo de Empresas
+      </button>
+
+      <button class="btn" onclick="location.href='personas.html'">
+        <span>👤</span> Grafo de Personas
+      </button>
     </aside>
 
   </div>
